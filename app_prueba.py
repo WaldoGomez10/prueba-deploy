@@ -4,7 +4,7 @@ from PIL import Image
 
 st.set_page_config(page_title = "Chatbot usando la API de OpenAI", page_icon = "😉")
 
-
+#export OPENAI_API_KEY=""
 
 with st.sidebar:
 
