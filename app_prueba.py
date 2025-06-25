@@ -4,13 +4,13 @@ from PIL import Image
 
 st.set_page_config(page_title = "Chatbot usando la API de OpenAI", page_icon = "😉")
 
-#export OPENAI_API_KEY=""
+#openai.api_key =""
 
 with st.sidebar:
 
     st.title("Usando la API de OpenAI")
 
-    image = Image.open('openai.jpg')
+    image = Image.open('images.jpg')
     st.image(image, caption = 'OpenAI')
 
     st.markdown(
@@ -25,7 +25,7 @@ def clear_chat_history():
 st.sidebar.button('Limpiar historial de chat', on_click = clear_chat_history)
 
 msg_chatbot = """
-        Soy un chatbot que está integrado a la API de OpenAI: 
+        Soy un chatbot colombiano 🇨🇴, que está integrado a la API de OpenAI: 
 
         ### Preguntas frecuentes
         
@@ -39,11 +39,13 @@ msg_chatbot = """
 
 def get_response_openai(prompt):
     
-    model = "gpt-3.5-turbo"
+    model = "gpt-4o" #"gpt-3.5-turbo"
 
     message_input = {
         'messages': [
-            {'role': 'system', 'content': 'Eres un asistente virtual'},
+            {'role': 'system', 'content': 'Eres un asistente virtual muy amigable, con una personalidad cálida, cercana y relajada. '
+                'Respondes como si fueras colombiano, usando modismos, expresiones y giros típicos de Colombia (como "parce", '
+                '"¿qué más?", "todo bien", "bacano", etc.)'},
             {'role': 'user', 'content': prompt}
         ]
     }
@@ -52,7 +54,7 @@ def get_response_openai(prompt):
     response = openai.ChatCompletion.create(
         model = model,
         messages = message_input['messages'],
-        temperature = 0, #Si está más cercano a 1, es posible que tenga alucinaciones.
+        temperature = 0.5, #Si está más cercano a 1, es posible que tenga alucinaciones.
         n = 1, #Número de respuestas
         max_tokens = 200
         )
