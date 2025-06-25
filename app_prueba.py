@@ -39,7 +39,7 @@ msg_chatbot = """
 
 def get_response_openai(prompt):
     
-    model = "gpt-4o" #"gpt-3.5-turbo"
+    model = "gpt-4.0-mini" #"gpt-3.5-turbo"
 
     message_input = {
         'messages': [
