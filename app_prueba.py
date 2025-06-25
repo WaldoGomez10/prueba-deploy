@@ -5,7 +5,7 @@ from PIL import Image
 st.set_page_config(page_title = "Chatbot usando la API de OpenAI", page_icon = "😉")
 
 #openai.api_key =""
-
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 with st.sidebar:
 
     st.title("Usando la API de OpenAI")
